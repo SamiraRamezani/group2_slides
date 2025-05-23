@@ -494,4 +494,63 @@ const res4 = await fetch("/api/students/michael", {
 -   Use **GET** for retrieving, **POST** for sending data
 
 ------------------------------------------------------------------------
+---
+title: "Async/Await vs Promise Chaining"
+author: Samira Ramezani
+format: revealjs
+---
+
+# What is Async/Await?
+
+This report explores the use of asynchronous programming in JavaScript, especially comparing `async/await` with `Promise chaining`. The discussion is based on a project that interacts with a REST API and uses JavaScript classes to model and manipulate student data.
+
+In the project, all network operations are handled asynchronously using `async/await`.
+
+```js
+async function fetchData() {
+  try {
+    let res = await fetch(url);
+    let data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+```
+---
+
+## Why Prefer Async/Await?
+
+- **Readability:** Code looks cleaner and easier to follow  
+- **Error Handling:** Try/catch makes catching errors straightforward  
+- **Maintainability:** Easier to write and refactor complex async flows
+
+---
+
+### Promise Chain Example
+
+```js
+
+fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+
+```
+
+
+
+## in the Project app.js
+
+
+```js
+
+let s = await Student.load("mchang");
+
+```
+
 
